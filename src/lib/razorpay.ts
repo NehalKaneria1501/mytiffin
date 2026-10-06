@@ -39,7 +39,11 @@ export async function createRazorpayOrder({
   receipt,
   notes = {},
 }: CreateOrderParams): Promise<RazorpayOrderResponse> {
-  const amountInPaise = Math.round(amount * 100);
+  // Ensure amount is strictly formatted as an integer in the smallest currency sub-unit (paise)
+  const amountInPaise = Math.round(Number(amount) * 100);
+  if (!Number.isInteger(amountInPaise) || amountInPaise <= 0) {
+    throw new Error(`Invalid order amount in paise: ${amountInPaise}`);
+  }
   const orderReceipt = receipt || `rcpt_${Date.now()}`;
 
   if (RAZORPAY_KEY_ID && RAZORPAY_KEY_SECRET) {
