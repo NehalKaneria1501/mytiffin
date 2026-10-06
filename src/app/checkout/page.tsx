@@ -168,9 +168,10 @@ export default function CheckoutPage() {
 
     // If Razorpay SDK is available on window, open the standard Razorpay modal
     if (typeof window !== 'undefined' && window.Razorpay) {
+      const amountInPaise = Math.round(Number(checkoutPlan.totalPrice) * 100);
       const options: any = {
         key: razorpayKey,
-        amount: checkoutPlan.totalPrice * 100, // amount in paisa
+        amount: amountInPaise, // amount in paise (smallest currency sub-unit)
         currency: 'INR',
         name: 'My Chef',
         description: `${checkoutPlan.collection.name} - ${checkoutPlan.planDuration.toUpperCase()}`,

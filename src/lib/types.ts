@@ -2,7 +2,7 @@ export type UserRole = 'consumer' | 'provider' | 'admin';
 
 export type OrderFulfillmentMode = 'delivery' | 'takeaway' | 'dinein';
 
-export type KitchenCategory = 'home_chef' | 'student_mess' | 'corporate_canteen' | 'gourmet_dining' | 'parcel_point';
+export type KitchenCategory = 'home_chef' | 'student_mess' | 'corporate_canteen' | 'gourmet_dining' | 'parcel_point' | 'cloud_kitchen';
 
 export type StarRatingTier = '3_star' | '4_star' | '5_star' | '6_star' | '7_star';
 export type StarTier = StarRatingTier;
